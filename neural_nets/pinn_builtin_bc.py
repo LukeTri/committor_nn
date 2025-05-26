@@ -13,7 +13,7 @@ import os
 
 FILE_PATH = os.path.join(os.getcwd(), "data")
 NN_PATH = "/nets/test"
-EM_PATH = "/samples/mueller_standard_b=0.1_n=200000.csv"
+SAMPLE_PATH = "/samples/mueller_standard_b=0.1_n=200000.csv"
 FE_PATH = "/fe_results/fe_mueller_b=0.1.csv"
 
 plot_losses=True

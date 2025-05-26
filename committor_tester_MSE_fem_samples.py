@@ -19,7 +19,7 @@ import os
 nn_type = "1"
 
 FILE_PATH = os.path.join(os.getcwd(), "data")
-NN_PATH = "/nets/direct_delta=0.02_3"
+NN_PATH = "/nets/test"
 FE_PATH = "/fe_results/fe_mueller_b=0.1.csv"
 
 potential_func = "mueller"
@@ -85,13 +85,10 @@ if potential_func == "face":
 else:
     ind = mp.MuellerPotentialVectorized(fem_samples) < -36
 
-model_vals = model_vals[ind]
-fem_vals = fem_vals[ind]
-
-x = (fem_vals - model_vals) ** 2
-
-print(np.mean(x))
-print(np.sum(x))
+plt.scatter(fem_samples[:,0], fem_samples[:,1],c = (fem_vals-model_vals)**2, cmap="plasma")
+plt.colorbar()
+mp.plot_contours()
+plt.show()
 
 RMSE = np.sqrt(np.sum((fem_vals - model_vals) ** 2 / len(fem_vals)))
 
